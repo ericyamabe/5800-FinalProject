@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestMeal {
     int mealId = 1;
@@ -13,6 +14,14 @@ public class TestMeal {
         meal.setName(this.name);
         String testName = meal.getName();
         assertEquals(testName, this.name);
+    }
+
+    @Test
+    public void badNameTest() {
+        Meal meal = new Meal();
+        assertThrows(meal.setName("Bad Nam3"), {
+            throw new Exception("Invalid name");
+        });
     }
 
     @Test

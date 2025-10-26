@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestUser {
     private String name = "Test User";
@@ -17,11 +18,27 @@ public class TestUser {
     }
 
     @Test
-    public void nameTest() {
+    public void badNameTest() {
         User user = new User();
-        user.setUsername(this.name);
+        assertThrows(user.setName("Bad Nam3"), {
+            throw new Exception("Invalid name");
+        });
+    }
+
+    @Test
+    public void usernameTest() {
+        User user = new User();
+        user.setUsername(this.username);
         String testUsername = user.getUsername();
         assertEquals(testUsername, this.username);
+    }
+
+    @Test
+    public void badUsernameTest() {
+        User user = new User();
+        assertThrows(user.setUsername("BadU$er"), {
+            throw new Exception("Invalid username");
+        });
     }
 
     @Test
@@ -33,9 +50,28 @@ public class TestUser {
     }
 
     @Test
+    public void badPasswordTest() {
+        User user = new User();
+        assertThrows(user.setPassword("B@d"), {
+            throw new Exception("Invalid password");
+        });
+    }
+
+    @Test
     public void selectTest() {
         User user = new User();
-        user->selectByUsername(this.username);
-        assertEqual(user.getName(), this.name);
+        user.selectByUsername(this.username);
+        assertThrows(user.setPassword("B@d"), {
+            throw new Exception("Invalid Name");
+        });
+    }
+
+    @Test
+    public void badSelectTest() {
+        User user = new User();
+        user.selectByUsername("BadUser");
+        assertThrows(user.setPassword("B@d"), {
+            throw new Exception("Invalid User");
+        });
     }
 }
