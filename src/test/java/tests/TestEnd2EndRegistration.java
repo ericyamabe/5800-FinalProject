@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class TestRegistration {
+public class TestEnd2EndRegistration {
     String name = "name";
     String username = "username";
     String password = "password";
